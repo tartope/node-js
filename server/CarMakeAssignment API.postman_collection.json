@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "46d67be9-079b-4bdc-938c-ba065b79d0c0",
+		"name": "Assignment API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27838341"
+	},
+	"item": [
+		{
+			"name": "GET Message",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GET Car",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost/cars/5"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Car Make",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/cars?make=Ford",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"cars"
+					],
+					"query": [
+						{
+							"key": "make",
+							"value": "Ford"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
