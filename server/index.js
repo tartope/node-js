@@ -31,29 +31,43 @@ app.get("/message", cors(corsOptions), async (req, res) => {
 // res.send(rows)
 // });
 
-app.get('/cars/:id', cors(corsOptions), async (req, res)=>{
-    const carId = req.params['id']
-    const [rows] = await promisePool.query('SELECT * from car WHERE car_id = ?', [carId]);
-    console.log(rows);
-    res.send(rows)
+app.get("/cars/:id", cors(corsOptions), async (req, res) => {
+  const carId = req.params["id"];
+  const [rows] = await promisePool.query("SELECT * from car WHERE car_id = ?", [
+    carId,
+  ]);
+  console.log(rows);
+  res.send(rows);
 });
 
-app.get('/cars', cors(corsOptions), async (req, res)=>{
-    const make = req.query['make']
-    const [rows] = await promisePool.query('SELECT * from car WHERE make = ?', [make]);
-    console.log(rows)
-    res.send(rows)
+app.get("/cars", cors(corsOptions), async (req, res) => {
+  const make = req.query["make"];
+  const [rows] = await promisePool.query("SELECT * from car WHERE make = ?", [
+    make,
+  ]);
+  console.log(rows);
+  res.send(rows);
 });
 
-app.post('/cars/', cors(corsOptions), async (req, res)=>{
-    const { model, make, color, price } = req.body;
-    const[rows] = await promisePool.query("INSERT INTO car (model, make, color, price) values (?, ?, ?, ?)", [model, make, color, price]);
-    res.status(200).json({message: "Car inserted successfully."});
+app.post("/cars/", cors(corsOptions), async (req, res) => {
+  const { model, make, color, price } = req.body;
+  const [rows] = await promisePool.query(
+    "INSERT INTO car (model, make, color, price) values (?, ?, ?, ?)",
+    [model, make, color, price]
+  );
+  res.status(200).json({ message: "Car inserted successfully." });
+});
+
+app.put('/cars/', cors(corsOptions), async (req, res)=>{
+    
+    const { model, make, color, price, carId } = req.body;
+    const update = await promisePool.query('UPDATE car SET model = ?, make = ?, color = ?, price = ? WHERE car_id = ?', [model, make, color, price, carId])
+    res.send(update)
 })
 
 app.listen(PORT, () => {
   console.log(`Express web API running on port: ${PORT}.`);
 });
 
-
 //const [model, make, color, price] = req.query['model', 'make', 'color', 'price']
+// update person set first_name = 'BOB' where person_id = 2;

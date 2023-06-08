@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "46d67be9-079b-4bdc-938c-ba065b79d0c0",
+		"name": "Assignment API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27838341"
+	},
+	"item": [
+		{
+			"name": "GET Message",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GET Car",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost/cars/5"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Car Make",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/cars?make=Ford",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"cars"
+					],
+					"query": [
+						{
+							"key": "make",
+							"value": "Ford"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Car",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\": \"WRX\",\r\n    \"make\": \"Subaru\",\r\n    \"color\": \"White\",\r\n    \"price\": \"40000\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost/cars/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"cars",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Car",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"carId\": 1,\r\n    \"model\": \"Mazda6\",\r\n    \"make\": \"Mazada\",\r\n    \"color\": \"black\",\r\n    \"price\": 20000\r\n}"
+				},
+				"url": "http://localhost/cars/"
+			},
+			"response": []
+		}
+	]
+}
