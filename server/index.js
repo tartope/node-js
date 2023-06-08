@@ -51,6 +51,7 @@ app.get("/cars", cors(corsOptions), async (req, res) => {
 
 app.post("/cars/", cors(corsOptions), async (req, res) => {
   const { model, make, color, price } = req.body;
+  console.log(req.body)
   const [rows] = await promisePool.query(
     "INSERT INTO car (model, make, color, price) values (?, ?, ?, ?)",
     [model, make, color, price]
@@ -63,6 +64,12 @@ app.put('/cars/', cors(corsOptions), async (req, res)=>{
     const { model, make, color, price, carId } = req.body;
     const update = await promisePool.query('UPDATE car SET model = ?, make = ?, color = ?, price = ? WHERE car_id = ?', [model, make, color, price, carId])
     res.send(update)
+});
+
+app.delete('/cars/:id', cors(corsOptions), async (req, res)=>{
+    const carId = req.params['id']
+    const deleteCar = await promisePool.query("DELETE from car WHERE car_id = ?", [carId])
+    res.send(deleteCar)
 })
 
 app.listen(PORT, () => {
